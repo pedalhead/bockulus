@@ -46,6 +46,10 @@ public:
     void Start ( const QString& strLoggingFileName );
     void AddServerStopped();
 
+    void AddNewConnection ( const QString& name, 
+                            const QHostAddress& ClientInetAddr,
+                            const int           iNumberOfConnectedClients );  
+
     void AddNewConnection ( const QHostAddress& ClientInetAddr,
                             const int           iNumberOfConnectedClients );
 

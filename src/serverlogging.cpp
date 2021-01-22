@@ -45,6 +45,19 @@ void CServerLogging::Start ( const QString& strLoggingFileName )
     }
 }
 
+void CServerLogging::AddNewConnection ( const QString& name,
+                                        const QHostAddress& ClientInetAddr,
+                                        const int           iNumberOfConnectedClients )
+{
+    // logging of new connected channel
+    const QString strLogStr = CurTimeDatetoLogString() + ", " +
+        ClientInetAddr.toString() + ", connected (" + name + ")";
+
+    QTextStream& tsConsoleStream = *( ( new ConsoleWriterFactory() )->get() );
+    tsConsoleStream << strLogStr << endl; // on console
+    *this << strLogStr; // in log file
+}
+
 void CServerLogging::AddNewConnection ( const QHostAddress& ClientInetAddr,
                                         const int           iNumberOfConnectedClients )
 {

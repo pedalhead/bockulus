@@ -656,7 +656,9 @@ void CServer::OnNewConnection ( int          iChID,
     DoubleFrameSizeConvBufOut[iChID].Reset();
 
     // logging of new connected channel
-    Logging.AddNewConnection ( RecHostAddr.InetAddr, GetNumberOfConnectedClients() );
+    //Logging.AddNewConnection ( RecHostAddr.InetAddr, GetNumberOfConnectedClients() );
+    const QString name = vecChannels[iChID].GetName();
+    Logging.AddNewConnection ( name, RecHostAddr.InetAddr, GetNumberOfConnectedClients() );
 }
 
 void CServer::OnServerFull ( CHostAddress RecHostAddr )
